@@ -35,4 +35,44 @@ router.setState = function() {
    *    1. You may add as many helper functions in this file as you like
    *    2. You may modify the parameters of setState() as much as you like
    */
+    // Wasn't able to push final code so just copied and pasted on github.com
+    if(page == "/#settings"){
+
+    // Set doc title to be settings
+    document.title = "settings";
+    // Set body settings
+    document.body.className = "settings";
+    // Sets header 
+    document.body.firstElementChild.firstElementChild.innerHTML = "Settings";
+
+  }
+
+  // If not settings page: 
+  else if(page.search("entry") != -1){
+    document.body.className = "single-entry";
+    let entryPage = document.querySelector('entry-page');
+    if(data != null){
+      // Remove and create entry-page
+      entryPage.remove();
+      entryPage = document.createElement('entry-page');
+
+      // set entryPage.entry to data (retrive using .data)
+      entryPage.entry = data; 
+      
+      
+    
+      document.querySelector('body').appendChild(entryPage);
+    }
+
+    document.title = "Entry " + page[page.length - 1];
+    // Sets header 
+    document.body.firstElementChild.firstElementChild.innerHTML = "Entry " + page[page.length - 1];
+
+    if(page.search("10") != -1){
+
+      // Setting header
+      document.body.firstElementChild.firstElementChild.innerHTML = "Entry 10";
+      document.title = "Entry 10";
+    }
+  }
 }
